@@ -1,0 +1,10 @@
+syntax = "proto3";
+import "digital.proto";
+
+package digital;
+
+option go_package = "./proto";
+
+service AuthService {
+    rpc Health (HealthRequest) returns (HealthReply) {}
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+package digital;
+option go_package = "./proto";
+
+message HealthRequest {
+    string ping = 1;
+}
+
+message HealthReply {
+    string ping = 1;
+}
