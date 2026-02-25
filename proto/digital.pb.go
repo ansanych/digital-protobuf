@@ -109,6 +109,218 @@ func (x *HealthReply) GetPing() string {
 	return ""
 }
 
+type StringIDRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StringIDRequest) Reset() {
+	*x = StringIDRequest{}
+	mi := &file_digital_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StringIDRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StringIDRequest) ProtoMessage() {}
+
+func (x *StringIDRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_digital_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StringIDRequest.ProtoReflect.Descriptor instead.
+func (*StringIDRequest) Descriptor() ([]byte, []int) {
+	return file_digital_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *StringIDRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type Pagination struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Page          uint32                 `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	Pages         uint32                 `protobuf:"varint,2,opt,name=pages,proto3" json:"pages,omitempty"`
+	Limit         uint32                 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
+	Total         uint32                 `protobuf:"varint,4,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Pagination) Reset() {
+	*x = Pagination{}
+	mi := &file_digital_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Pagination) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Pagination) ProtoMessage() {}
+
+func (x *Pagination) ProtoReflect() protoreflect.Message {
+	mi := &file_digital_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Pagination.ProtoReflect.Descriptor instead.
+func (*Pagination) Descriptor() ([]byte, []int) {
+	return file_digital_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Pagination) GetPage() uint32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *Pagination) GetPages() uint32 {
+	if x != nil {
+		return x.Pages
+	}
+	return 0
+}
+
+func (x *Pagination) GetLimit() uint32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *Pagination) GetTotal() uint32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+type User struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Lastname      string                 `protobuf:"bytes,3,opt,name=lastname,proto3" json:"lastname,omitempty"`
+	Login         string                 `protobuf:"bytes,4,opt,name=login,proto3" json:"login,omitempty"`
+	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
+	EmailVerify   bool                   `protobuf:"varint,6,opt,name=emailVerify,proto3" json:"emailVerify,omitempty"`
+	Phone         uint32                 `protobuf:"varint,7,opt,name=phone,proto3" json:"phone,omitempty"`
+	PhoneVerify   bool                   `protobuf:"varint,8,opt,name=phoneVerify,proto3" json:"phoneVerify,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *User) Reset() {
+	*x = User{}
+	mi := &file_digital_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *User) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*User) ProtoMessage() {}
+
+func (x *User) ProtoReflect() protoreflect.Message {
+	mi := &file_digital_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use User.ProtoReflect.Descriptor instead.
+func (*User) Descriptor() ([]byte, []int) {
+	return file_digital_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *User) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *User) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *User) GetLastname() string {
+	if x != nil {
+		return x.Lastname
+	}
+	return ""
+}
+
+func (x *User) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *User) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *User) GetEmailVerify() bool {
+	if x != nil {
+		return x.EmailVerify
+	}
+	return false
+}
+
+func (x *User) GetPhone() uint32 {
+	if x != nil {
+		return x.Phone
+	}
+	return 0
+}
+
+func (x *User) GetPhoneVerify() bool {
+	if x != nil {
+		return x.PhoneVerify
+	}
+	return false
+}
+
 var File_digital_proto protoreflect.FileDescriptor
 
 const file_digital_proto_rawDesc = "" +
@@ -117,7 +329,24 @@ const file_digital_proto_rawDesc = "" +
 	"\rHealthRequest\x12\x12\n" +
 	"\x04ping\x18\x01 \x01(\tR\x04ping\"!\n" +
 	"\vHealthReply\x12\x12\n" +
-	"\x04ping\x18\x01 \x01(\tR\x04pingB\tZ\a./protob\x06proto3"
+	"\x04ping\x18\x01 \x01(\tR\x04ping\"!\n" +
+	"\x0fStringIDRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"b\n" +
+	"\n" +
+	"Pagination\x12\x12\n" +
+	"\x04page\x18\x01 \x01(\rR\x04page\x12\x14\n" +
+	"\x05pages\x18\x02 \x01(\rR\x05pages\x12\x14\n" +
+	"\x05limit\x18\x03 \x01(\rR\x05limit\x12\x14\n" +
+	"\x05total\x18\x04 \x01(\rR\x05total\"\xcc\x01\n" +
+	"\x04User\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
+	"\blastname\x18\x03 \x01(\tR\blastname\x12\x14\n" +
+	"\x05login\x18\x04 \x01(\tR\x05login\x12\x14\n" +
+	"\x05email\x18\x05 \x01(\tR\x05email\x12 \n" +
+	"\vemailVerify\x18\x06 \x01(\bR\vemailVerify\x12\x14\n" +
+	"\x05phone\x18\a \x01(\rR\x05phone\x12 \n" +
+	"\vphoneVerify\x18\b \x01(\bR\vphoneVerifyB\tZ\a./protob\x06proto3"
 
 var (
 	file_digital_proto_rawDescOnce sync.Once
@@ -131,10 +360,13 @@ func file_digital_proto_rawDescGZIP() []byte {
 	return file_digital_proto_rawDescData
 }
 
-var file_digital_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_digital_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_digital_proto_goTypes = []any{
-	(*HealthRequest)(nil), // 0: digital.HealthRequest
-	(*HealthReply)(nil),   // 1: digital.HealthReply
+	(*HealthRequest)(nil),   // 0: digital.HealthRequest
+	(*HealthReply)(nil),     // 1: digital.HealthReply
+	(*StringIDRequest)(nil), // 2: digital.StringIDRequest
+	(*Pagination)(nil),      // 3: digital.Pagination
+	(*User)(nil),            // 4: digital.User
 }
 var file_digital_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -155,7 +387,7 @@ func file_digital_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_digital_proto_rawDesc), len(file_digital_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

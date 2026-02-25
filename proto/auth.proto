@@ -7,4 +7,16 @@ option go_package = "./proto";
 
 service AuthService {
     rpc Health (HealthRequest) returns (HealthReply) {}
+    rpc GetUsers (UsersRequest) returns (Users) {}
+    rpc GetUser (StringIDRequest) returns (User) {}
+}
+
+message UsersRequest {
+    uint32 page = 1;
+    uint32 limit = 2;
+}
+
+message Users {
+    repeated User users = 1;
+    Pagination pagination = 2;
 }

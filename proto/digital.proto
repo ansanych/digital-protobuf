@@ -9,3 +9,25 @@ message HealthRequest {
 message HealthReply {
     string ping = 1;
 }
+
+message StringIDRequest {
+    string id = 1;
+}
+
+message Pagination {
+    uint32 page = 1;
+    uint32 pages = 2;
+    uint32 limit = 3;
+    uint32 total = 4;
+}
+
+message User {
+    string id = 1;
+    string name = 2;
+    string lastname = 3;
+    string login = 4;
+    string email = 5;
+    bool emailVerify = 6;
+    uint32 phone = 7;
+    bool phoneVerify = 8;
+}
