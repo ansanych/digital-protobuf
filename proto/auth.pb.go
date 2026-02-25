@@ -21,6 +21,110 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type LoginRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LoginRequest) Reset() {
+	*x = LoginRequest{}
+	mi := &file_auth_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LoginRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LoginRequest) ProtoMessage() {}
+
+func (x *LoginRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
+func (*LoginRequest) Descriptor() ([]byte, []int) {
+	return file_auth_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *LoginRequest) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *LoginRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+type Tokens struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=accessToken,proto3" json:"accessToken,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refreshToken,proto3" json:"refreshToken,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Tokens) Reset() {
+	*x = Tokens{}
+	mi := &file_auth_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Tokens) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Tokens) ProtoMessage() {}
+
+func (x *Tokens) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Tokens.ProtoReflect.Descriptor instead.
+func (*Tokens) Descriptor() ([]byte, []int) {
+	return file_auth_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *Tokens) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+func (x *Tokens) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
+}
+
 type UsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Page          uint32                 `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
@@ -31,7 +135,7 @@ type UsersRequest struct {
 
 func (x *UsersRequest) Reset() {
 	*x = UsersRequest{}
-	mi := &file_auth_proto_msgTypes[0]
+	mi := &file_auth_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +147,7 @@ func (x *UsersRequest) String() string {
 func (*UsersRequest) ProtoMessage() {}
 
 func (x *UsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[0]
+	mi := &file_auth_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +160,7 @@ func (x *UsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UsersRequest.ProtoReflect.Descriptor instead.
 func (*UsersRequest) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{0}
+	return file_auth_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *UsersRequest) GetPage() uint32 {
@@ -83,7 +187,7 @@ type Users struct {
 
 func (x *Users) Reset() {
 	*x = Users{}
-	mi := &file_auth_proto_msgTypes[1]
+	mi := &file_auth_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -95,7 +199,7 @@ func (x *Users) String() string {
 func (*Users) ProtoMessage() {}
 
 func (x *Users) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_proto_msgTypes[1]
+	mi := &file_auth_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -108,7 +212,7 @@ func (x *Users) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Users.ProtoReflect.Descriptor instead.
 func (*Users) Descriptor() ([]byte, []int) {
-	return file_auth_proto_rawDescGZIP(), []int{1}
+	return file_auth_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Users) GetUsers() []*User {
@@ -125,12 +229,62 @@ func (x *Users) GetPagination() *Pagination {
 	return nil
 }
 
+type CreateUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateUserRequest) Reset() {
+	*x = CreateUserRequest{}
+	mi := &file_auth_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateUserRequest) ProtoMessage() {}
+
+func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
+func (*CreateUserRequest) Descriptor() ([]byte, []int) {
+	return file_auth_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CreateUserRequest) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 var File_auth_proto protoreflect.FileDescriptor
 
 const file_auth_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"auth.proto\x12\adigital\x1a\rdigital.proto\"8\n" +
+	"auth.proto\x12\adigital\x1a\rdigital.proto\"@\n" +
+	"\fLoginRequest\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"N\n" +
+	"\x06Tokens\x12 \n" +
+	"\vaccessToken\x18\x01 \x01(\tR\vaccessToken\x12\"\n" +
+	"\frefreshToken\x18\x02 \x01(\tR\frefreshToken\"8\n" +
 	"\fUsersRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\rR\x04page\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\rR\x05limit\"a\n" +
@@ -138,11 +292,21 @@ const file_auth_proto_rawDesc = "" +
 	"\x05users\x18\x01 \x03(\v2\r.digital.UserR\x05users\x123\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x13.digital.PaginationR\n" +
-	"pagination2\xb2\x01\n" +
-	"\vAuthService\x128\n" +
+	"pagination\"6\n" +
+	"\x11CreateUserRequest\x12!\n" +
+	"\x04user\x18\x01 \x01(\v2\r.digital.UserR\x04user2\xd1\x03\n" +
+	"\vAuthService\x121\n" +
+	"\x05Login\x12\x15.digital.LoginRequest\x1a\x0f.digital.Tokens\"\x00\x12-\n" +
+	"\aRefresh\x12\x0f.digital.Tokens\x1a\x0f.digital.Tokens\"\x00\x128\n" +
 	"\x06Health\x12\x16.digital.HealthRequest\x1a\x14.digital.HealthReply\"\x00\x123\n" +
 	"\bGetUsers\x12\x15.digital.UsersRequest\x1a\x0e.digital.Users\"\x00\x124\n" +
-	"\aGetUser\x12\x18.digital.StringIDRequest\x1a\r.digital.User\"\x00B\tZ\a./protob\x06proto3"
+	"\aGetUser\x12\x18.digital.StringIDRequest\x1a\r.digital.User\"\x00\x129\n" +
+	"\n" +
+	"CreateUser\x12\x1a.digital.CreateUserRequest\x1a\r.digital.User\"\x00\x12@\n" +
+	"\n" +
+	"UpdateUser\x12\x1a.digital.CreateUserRequest\x1a\x14.digital.StatusReply\"\x00\x12>\n" +
+	"\n" +
+	"DeleteUser\x12\x18.digital.StringIDRequest\x1a\x14.digital.StatusReply\"\x00B\tZ\a./protob\x06proto3"
 
 var (
 	file_auth_proto_rawDescOnce sync.Once
@@ -156,30 +320,45 @@ func file_auth_proto_rawDescGZIP() []byte {
 	return file_auth_proto_rawDescData
 }
 
-var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_auth_proto_goTypes = []any{
-	(*UsersRequest)(nil),    // 0: digital.UsersRequest
-	(*Users)(nil),           // 1: digital.Users
-	(*User)(nil),            // 2: digital.User
-	(*Pagination)(nil),      // 3: digital.Pagination
-	(*HealthRequest)(nil),   // 4: digital.HealthRequest
-	(*StringIDRequest)(nil), // 5: digital.StringIDRequest
-	(*HealthReply)(nil),     // 6: digital.HealthReply
+	(*LoginRequest)(nil),      // 0: digital.LoginRequest
+	(*Tokens)(nil),            // 1: digital.Tokens
+	(*UsersRequest)(nil),      // 2: digital.UsersRequest
+	(*Users)(nil),             // 3: digital.Users
+	(*CreateUserRequest)(nil), // 4: digital.CreateUserRequest
+	(*User)(nil),              // 5: digital.User
+	(*Pagination)(nil),        // 6: digital.Pagination
+	(*HealthRequest)(nil),     // 7: digital.HealthRequest
+	(*StringIDRequest)(nil),   // 8: digital.StringIDRequest
+	(*HealthReply)(nil),       // 9: digital.HealthReply
+	(*StatusReply)(nil),       // 10: digital.StatusReply
 }
 var file_auth_proto_depIdxs = []int32{
-	2, // 0: digital.Users.users:type_name -> digital.User
-	3, // 1: digital.Users.pagination:type_name -> digital.Pagination
-	4, // 2: digital.AuthService.Health:input_type -> digital.HealthRequest
-	0, // 3: digital.AuthService.GetUsers:input_type -> digital.UsersRequest
-	5, // 4: digital.AuthService.GetUser:input_type -> digital.StringIDRequest
-	6, // 5: digital.AuthService.Health:output_type -> digital.HealthReply
-	1, // 6: digital.AuthService.GetUsers:output_type -> digital.Users
-	2, // 7: digital.AuthService.GetUser:output_type -> digital.User
-	5, // [5:8] is the sub-list for method output_type
-	2, // [2:5] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	5,  // 0: digital.Users.users:type_name -> digital.User
+	6,  // 1: digital.Users.pagination:type_name -> digital.Pagination
+	5,  // 2: digital.CreateUserRequest.user:type_name -> digital.User
+	0,  // 3: digital.AuthService.Login:input_type -> digital.LoginRequest
+	1,  // 4: digital.AuthService.Refresh:input_type -> digital.Tokens
+	7,  // 5: digital.AuthService.Health:input_type -> digital.HealthRequest
+	2,  // 6: digital.AuthService.GetUsers:input_type -> digital.UsersRequest
+	8,  // 7: digital.AuthService.GetUser:input_type -> digital.StringIDRequest
+	4,  // 8: digital.AuthService.CreateUser:input_type -> digital.CreateUserRequest
+	4,  // 9: digital.AuthService.UpdateUser:input_type -> digital.CreateUserRequest
+	8,  // 10: digital.AuthService.DeleteUser:input_type -> digital.StringIDRequest
+	1,  // 11: digital.AuthService.Login:output_type -> digital.Tokens
+	1,  // 12: digital.AuthService.Refresh:output_type -> digital.Tokens
+	9,  // 13: digital.AuthService.Health:output_type -> digital.HealthReply
+	3,  // 14: digital.AuthService.GetUsers:output_type -> digital.Users
+	5,  // 15: digital.AuthService.GetUser:output_type -> digital.User
+	5,  // 16: digital.AuthService.CreateUser:output_type -> digital.User
+	10, // 17: digital.AuthService.UpdateUser:output_type -> digital.StatusReply
+	10, // 18: digital.AuthService.DeleteUser:output_type -> digital.StatusReply
+	11, // [11:19] is the sub-list for method output_type
+	3,  // [3:11] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_auth_proto_init() }
@@ -194,7 +373,7 @@ func file_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_proto_rawDesc), len(file_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

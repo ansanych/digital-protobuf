@@ -6,9 +6,24 @@ package digital;
 option go_package = "./proto";
 
 service AuthService {
+    rpc Login (LoginRequest) returns (Tokens) {}
+    rpc Refresh (Tokens) returns (Tokens) {}
     rpc Health (HealthRequest) returns (HealthReply) {}
     rpc GetUsers (UsersRequest) returns (Users) {}
     rpc GetUser (StringIDRequest) returns (User) {}
+    rpc CreateUser (CreateUserRequest) returns (User) {}
+    rpc UpdateUser (CreateUserRequest) returns (StatusReply) {}
+    rpc DeleteUser (StringIDRequest) returns (StatusReply) {}
+}
+
+message LoginRequest {
+    string login = 1;
+    string password = 2;
+}
+
+message Tokens {
+    string accessToken = 1;
+    string refreshToken = 2;
 }
 
 message UsersRequest {
@@ -19,4 +34,8 @@ message UsersRequest {
 message Users {
     repeated User users = 1;
     Pagination pagination = 2;
+}
+
+message CreateUserRequest {
+    User user = 1;
 }

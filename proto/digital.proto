@@ -2,6 +2,18 @@ syntax = "proto3";
 package digital;
 option go_package = "./proto";
 
+enum Status {
+    UNKNOWN = 0;
+    ACTIVE = 1;
+    INACTIVE = 2;
+    OK = 3;
+    ERROR = 4;
+}
+
+message StatusReply {
+    Status status = 1; 
+}
+
 message HealthRequest {
     string ping = 1;
 }
@@ -30,4 +42,7 @@ message User {
     bool emailVerify = 6;
     uint32 phone = 7;
     bool phoneVerify = 8;
+    bool active = 9;
+    string createdAt = 10;
+    string updatedAt = 11;
 }

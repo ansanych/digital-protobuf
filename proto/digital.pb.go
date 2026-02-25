@@ -21,6 +21,105 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type Status int32
+
+const (
+	Status_UNKNOWN  Status = 0
+	Status_ACTIVE   Status = 1
+	Status_INACTIVE Status = 2
+	Status_OK       Status = 3
+	Status_ERROR    Status = 4
+)
+
+// Enum value maps for Status.
+var (
+	Status_name = map[int32]string{
+		0: "UNKNOWN",
+		1: "ACTIVE",
+		2: "INACTIVE",
+		3: "OK",
+		4: "ERROR",
+	}
+	Status_value = map[string]int32{
+		"UNKNOWN":  0,
+		"ACTIVE":   1,
+		"INACTIVE": 2,
+		"OK":       3,
+		"ERROR":    4,
+	}
+)
+
+func (x Status) Enum() *Status {
+	p := new(Status)
+	*p = x
+	return p
+}
+
+func (x Status) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Status) Descriptor() protoreflect.EnumDescriptor {
+	return file_digital_proto_enumTypes[0].Descriptor()
+}
+
+func (Status) Type() protoreflect.EnumType {
+	return &file_digital_proto_enumTypes[0]
+}
+
+func (x Status) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Status.Descriptor instead.
+func (Status) EnumDescriptor() ([]byte, []int) {
+	return file_digital_proto_rawDescGZIP(), []int{0}
+}
+
+type StatusReply struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        Status                 `protobuf:"varint,1,opt,name=status,proto3,enum=digital.Status" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StatusReply) Reset() {
+	*x = StatusReply{}
+	mi := &file_digital_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StatusReply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StatusReply) ProtoMessage() {}
+
+func (x *StatusReply) ProtoReflect() protoreflect.Message {
+	mi := &file_digital_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StatusReply.ProtoReflect.Descriptor instead.
+func (*StatusReply) Descriptor() ([]byte, []int) {
+	return file_digital_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *StatusReply) GetStatus() Status {
+	if x != nil {
+		return x.Status
+	}
+	return Status_UNKNOWN
+}
+
 type HealthRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Ping          string                 `protobuf:"bytes,1,opt,name=ping,proto3" json:"ping,omitempty"`
@@ -30,7 +129,7 @@ type HealthRequest struct {
 
 func (x *HealthRequest) Reset() {
 	*x = HealthRequest{}
-	mi := &file_digital_proto_msgTypes[0]
+	mi := &file_digital_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +141,7 @@ func (x *HealthRequest) String() string {
 func (*HealthRequest) ProtoMessage() {}
 
 func (x *HealthRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_digital_proto_msgTypes[0]
+	mi := &file_digital_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +154,7 @@ func (x *HealthRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HealthRequest.ProtoReflect.Descriptor instead.
 func (*HealthRequest) Descriptor() ([]byte, []int) {
-	return file_digital_proto_rawDescGZIP(), []int{0}
+	return file_digital_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *HealthRequest) GetPing() string {
@@ -74,7 +173,7 @@ type HealthReply struct {
 
 func (x *HealthReply) Reset() {
 	*x = HealthReply{}
-	mi := &file_digital_proto_msgTypes[1]
+	mi := &file_digital_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -86,7 +185,7 @@ func (x *HealthReply) String() string {
 func (*HealthReply) ProtoMessage() {}
 
 func (x *HealthReply) ProtoReflect() protoreflect.Message {
-	mi := &file_digital_proto_msgTypes[1]
+	mi := &file_digital_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -99,7 +198,7 @@ func (x *HealthReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HealthReply.ProtoReflect.Descriptor instead.
 func (*HealthReply) Descriptor() ([]byte, []int) {
-	return file_digital_proto_rawDescGZIP(), []int{1}
+	return file_digital_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *HealthReply) GetPing() string {
@@ -118,7 +217,7 @@ type StringIDRequest struct {
 
 func (x *StringIDRequest) Reset() {
 	*x = StringIDRequest{}
-	mi := &file_digital_proto_msgTypes[2]
+	mi := &file_digital_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -130,7 +229,7 @@ func (x *StringIDRequest) String() string {
 func (*StringIDRequest) ProtoMessage() {}
 
 func (x *StringIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_digital_proto_msgTypes[2]
+	mi := &file_digital_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -143,7 +242,7 @@ func (x *StringIDRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StringIDRequest.ProtoReflect.Descriptor instead.
 func (*StringIDRequest) Descriptor() ([]byte, []int) {
-	return file_digital_proto_rawDescGZIP(), []int{2}
+	return file_digital_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *StringIDRequest) GetId() string {
@@ -165,7 +264,7 @@ type Pagination struct {
 
 func (x *Pagination) Reset() {
 	*x = Pagination{}
-	mi := &file_digital_proto_msgTypes[3]
+	mi := &file_digital_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -177,7 +276,7 @@ func (x *Pagination) String() string {
 func (*Pagination) ProtoMessage() {}
 
 func (x *Pagination) ProtoReflect() protoreflect.Message {
-	mi := &file_digital_proto_msgTypes[3]
+	mi := &file_digital_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -190,7 +289,7 @@ func (x *Pagination) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Pagination.ProtoReflect.Descriptor instead.
 func (*Pagination) Descriptor() ([]byte, []int) {
-	return file_digital_proto_rawDescGZIP(), []int{3}
+	return file_digital_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Pagination) GetPage() uint32 {
@@ -231,13 +330,16 @@ type User struct {
 	EmailVerify   bool                   `protobuf:"varint,6,opt,name=emailVerify,proto3" json:"emailVerify,omitempty"`
 	Phone         uint32                 `protobuf:"varint,7,opt,name=phone,proto3" json:"phone,omitempty"`
 	PhoneVerify   bool                   `protobuf:"varint,8,opt,name=phoneVerify,proto3" json:"phoneVerify,omitempty"`
+	Active        bool                   `protobuf:"varint,9,opt,name=active,proto3" json:"active,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,10,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,11,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_digital_proto_msgTypes[4]
+	mi := &file_digital_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -249,7 +351,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_digital_proto_msgTypes[4]
+	mi := &file_digital_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -262,7 +364,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_digital_proto_rawDescGZIP(), []int{4}
+	return file_digital_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *User) GetId() string {
@@ -321,11 +423,34 @@ func (x *User) GetPhoneVerify() bool {
 	return false
 }
 
+func (x *User) GetActive() bool {
+	if x != nil {
+		return x.Active
+	}
+	return false
+}
+
+func (x *User) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *User) GetUpdatedAt() string {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return ""
+}
+
 var File_digital_proto protoreflect.FileDescriptor
 
 const file_digital_proto_rawDesc = "" +
 	"\n" +
-	"\rdigital.proto\x12\adigital\"#\n" +
+	"\rdigital.proto\x12\adigital\"6\n" +
+	"\vStatusReply\x12'\n" +
+	"\x06status\x18\x01 \x01(\x0e2\x0f.digital.StatusR\x06status\"#\n" +
 	"\rHealthRequest\x12\x12\n" +
 	"\x04ping\x18\x01 \x01(\tR\x04ping\"!\n" +
 	"\vHealthReply\x12\x12\n" +
@@ -337,7 +462,7 @@ const file_digital_proto_rawDesc = "" +
 	"\x04page\x18\x01 \x01(\rR\x04page\x12\x14\n" +
 	"\x05pages\x18\x02 \x01(\rR\x05pages\x12\x14\n" +
 	"\x05limit\x18\x03 \x01(\rR\x05limit\x12\x14\n" +
-	"\x05total\x18\x04 \x01(\rR\x05total\"\xcc\x01\n" +
+	"\x05total\x18\x04 \x01(\rR\x05total\"\xa0\x02\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
@@ -346,7 +471,18 @@ const file_digital_proto_rawDesc = "" +
 	"\x05email\x18\x05 \x01(\tR\x05email\x12 \n" +
 	"\vemailVerify\x18\x06 \x01(\bR\vemailVerify\x12\x14\n" +
 	"\x05phone\x18\a \x01(\rR\x05phone\x12 \n" +
-	"\vphoneVerify\x18\b \x01(\bR\vphoneVerifyB\tZ\a./protob\x06proto3"
+	"\vphoneVerify\x18\b \x01(\bR\vphoneVerify\x12\x16\n" +
+	"\x06active\x18\t \x01(\bR\x06active\x12\x1c\n" +
+	"\tcreatedAt\x18\n" +
+	" \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\v \x01(\tR\tupdatedAt*B\n" +
+	"\x06Status\x12\v\n" +
+	"\aUNKNOWN\x10\x00\x12\n" +
+	"\n" +
+	"\x06ACTIVE\x10\x01\x12\f\n" +
+	"\bINACTIVE\x10\x02\x12\x06\n" +
+	"\x02OK\x10\x03\x12\t\n" +
+	"\x05ERROR\x10\x04B\tZ\a./protob\x06proto3"
 
 var (
 	file_digital_proto_rawDescOnce sync.Once
@@ -360,20 +496,24 @@ func file_digital_proto_rawDescGZIP() []byte {
 	return file_digital_proto_rawDescData
 }
 
-var file_digital_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_digital_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_digital_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_digital_proto_goTypes = []any{
-	(*HealthRequest)(nil),   // 0: digital.HealthRequest
-	(*HealthReply)(nil),     // 1: digital.HealthReply
-	(*StringIDRequest)(nil), // 2: digital.StringIDRequest
-	(*Pagination)(nil),      // 3: digital.Pagination
-	(*User)(nil),            // 4: digital.User
+	(Status)(0),             // 0: digital.Status
+	(*StatusReply)(nil),     // 1: digital.StatusReply
+	(*HealthRequest)(nil),   // 2: digital.HealthRequest
+	(*HealthReply)(nil),     // 3: digital.HealthReply
+	(*StringIDRequest)(nil), // 4: digital.StringIDRequest
+	(*Pagination)(nil),      // 5: digital.Pagination
+	(*User)(nil),            // 6: digital.User
 }
 var file_digital_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: digital.StatusReply.status:type_name -> digital.Status
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_digital_proto_init() }
@@ -386,13 +526,14 @@ func file_digital_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_digital_proto_rawDesc), len(file_digital_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   5,
+			NumEnums:      1,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_digital_proto_goTypes,
 		DependencyIndexes: file_digital_proto_depIdxs,
+		EnumInfos:         file_digital_proto_enumTypes,
 		MessageInfos:      file_digital_proto_msgTypes,
 	}.Build()
 	File_digital_proto = out.File
