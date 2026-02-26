@@ -231,8 +231,12 @@ func (x *Users) GetPagination() *Pagination {
 
 type CreateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Lastname      string                 `protobuf:"bytes,2,opt,name=lastname,proto3" json:"lastname,omitempty"`
+	Login         string                 `protobuf:"bytes,3,opt,name=login,proto3" json:"login,omitempty"`
+	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
+	Phone         string                 `protobuf:"bytes,5,opt,name=phone,proto3" json:"phone,omitempty"`
+	Password      string                 `protobuf:"bytes,6,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -267,11 +271,39 @@ func (*CreateUserRequest) Descriptor() ([]byte, []int) {
 	return file_auth_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *CreateUserRequest) GetUser() *User {
+func (x *CreateUserRequest) GetName() string {
 	if x != nil {
-		return x.User
+		return x.Name
 	}
-	return nil
+	return ""
+}
+
+func (x *CreateUserRequest) GetLastname() string {
+	if x != nil {
+		return x.Lastname
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
 }
 
 func (x *CreateUserRequest) GetPassword() string {
@@ -300,10 +332,14 @@ const file_auth_proto_rawDesc = "" +
 	"\x05users\x18\x01 \x03(\v2\r.digital.UserR\x05users\x123\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x13.digital.PaginationR\n" +
-	"pagination\"R\n" +
-	"\x11CreateUserRequest\x12!\n" +
-	"\x04user\x18\x01 \x01(\v2\r.digital.UserR\x04user\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword2\x91\x04\n" +
+	"pagination\"\xa1\x01\n" +
+	"\x11CreateUserRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1a\n" +
+	"\blastname\x18\x02 \x01(\tR\blastname\x12\x14\n" +
+	"\x05login\x18\x03 \x01(\tR\x05login\x12\x14\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email\x12\x14\n" +
+	"\x05phone\x18\x05 \x01(\tR\x05phone\x12\x1a\n" +
+	"\bpassword\x18\x06 \x01(\tR\bpassword2\x91\x04\n" +
 	"\vAuthService\x128\n" +
 	"\x06Health\x12\x16.digital.HealthRequest\x1a\x14.digital.HealthReply\"\x00\x121\n" +
 	"\x05Login\x12\x15.digital.LoginRequest\x1a\x0f.digital.Tokens\"\x00\x12-\n" +
@@ -347,30 +383,29 @@ var file_auth_proto_goTypes = []any{
 var file_auth_proto_depIdxs = []int32{
 	5,  // 0: digital.Users.users:type_name -> digital.User
 	6,  // 1: digital.Users.pagination:type_name -> digital.Pagination
-	5,  // 2: digital.CreateUserRequest.user:type_name -> digital.User
-	7,  // 3: digital.AuthService.Health:input_type -> digital.HealthRequest
-	0,  // 4: digital.AuthService.Login:input_type -> digital.LoginRequest
-	1,  // 5: digital.AuthService.Refresh:input_type -> digital.Tokens
-	4,  // 6: digital.AuthService.Register:input_type -> digital.CreateUserRequest
-	2,  // 7: digital.AuthService.GetUsers:input_type -> digital.UsersRequest
-	8,  // 8: digital.AuthService.GetUser:input_type -> digital.StringIDRequest
-	4,  // 9: digital.AuthService.CreateUser:input_type -> digital.CreateUserRequest
-	4,  // 10: digital.AuthService.UpdateUser:input_type -> digital.CreateUserRequest
-	8,  // 11: digital.AuthService.DeleteUser:input_type -> digital.StringIDRequest
-	9,  // 12: digital.AuthService.Health:output_type -> digital.HealthReply
-	1,  // 13: digital.AuthService.Login:output_type -> digital.Tokens
-	1,  // 14: digital.AuthService.Refresh:output_type -> digital.Tokens
-	10, // 15: digital.AuthService.Register:output_type -> digital.StatusReply
-	3,  // 16: digital.AuthService.GetUsers:output_type -> digital.Users
-	5,  // 17: digital.AuthService.GetUser:output_type -> digital.User
-	5,  // 18: digital.AuthService.CreateUser:output_type -> digital.User
-	10, // 19: digital.AuthService.UpdateUser:output_type -> digital.StatusReply
-	10, // 20: digital.AuthService.DeleteUser:output_type -> digital.StatusReply
-	12, // [12:21] is the sub-list for method output_type
-	3,  // [3:12] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	7,  // 2: digital.AuthService.Health:input_type -> digital.HealthRequest
+	0,  // 3: digital.AuthService.Login:input_type -> digital.LoginRequest
+	1,  // 4: digital.AuthService.Refresh:input_type -> digital.Tokens
+	4,  // 5: digital.AuthService.Register:input_type -> digital.CreateUserRequest
+	2,  // 6: digital.AuthService.GetUsers:input_type -> digital.UsersRequest
+	8,  // 7: digital.AuthService.GetUser:input_type -> digital.StringIDRequest
+	4,  // 8: digital.AuthService.CreateUser:input_type -> digital.CreateUserRequest
+	4,  // 9: digital.AuthService.UpdateUser:input_type -> digital.CreateUserRequest
+	8,  // 10: digital.AuthService.DeleteUser:input_type -> digital.StringIDRequest
+	9,  // 11: digital.AuthService.Health:output_type -> digital.HealthReply
+	1,  // 12: digital.AuthService.Login:output_type -> digital.Tokens
+	1,  // 13: digital.AuthService.Refresh:output_type -> digital.Tokens
+	10, // 14: digital.AuthService.Register:output_type -> digital.StatusReply
+	3,  // 15: digital.AuthService.GetUsers:output_type -> digital.Users
+	5,  // 16: digital.AuthService.GetUser:output_type -> digital.User
+	5,  // 17: digital.AuthService.CreateUser:output_type -> digital.User
+	10, // 18: digital.AuthService.UpdateUser:output_type -> digital.StatusReply
+	10, // 19: digital.AuthService.DeleteUser:output_type -> digital.StatusReply
+	11, // [11:20] is the sub-list for method output_type
+	2,  // [2:11] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_auth_proto_init() }

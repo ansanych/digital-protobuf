@@ -328,7 +328,7 @@ type User struct {
 	Login         string                 `protobuf:"bytes,4,opt,name=login,proto3" json:"login,omitempty"`
 	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
 	EmailVerify   bool                   `protobuf:"varint,6,opt,name=emailVerify,proto3" json:"emailVerify,omitempty"`
-	Phone         uint32                 `protobuf:"varint,7,opt,name=phone,proto3" json:"phone,omitempty"`
+	Phone         int64                  `protobuf:"varint,7,opt,name=phone,proto3" json:"phone,omitempty"`
 	PhoneVerify   bool                   `protobuf:"varint,8,opt,name=phoneVerify,proto3" json:"phoneVerify,omitempty"`
 	Active        bool                   `protobuf:"varint,9,opt,name=active,proto3" json:"active,omitempty"`
 	CreatedAt     string                 `protobuf:"bytes,10,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
@@ -409,7 +409,7 @@ func (x *User) GetEmailVerify() bool {
 	return false
 }
 
-func (x *User) GetPhone() uint32 {
+func (x *User) GetPhone() int64 {
 	if x != nil {
 		return x.Phone
 	}
@@ -470,7 +470,7 @@ const file_digital_proto_rawDesc = "" +
 	"\x05login\x18\x04 \x01(\tR\x05login\x12\x14\n" +
 	"\x05email\x18\x05 \x01(\tR\x05email\x12 \n" +
 	"\vemailVerify\x18\x06 \x01(\bR\vemailVerify\x12\x14\n" +
-	"\x05phone\x18\a \x01(\rR\x05phone\x12 \n" +
+	"\x05phone\x18\a \x01(\x03R\x05phone\x12 \n" +
 	"\vphoneVerify\x18\b \x01(\bR\vphoneVerify\x12\x16\n" +
 	"\x06active\x18\t \x01(\bR\x06active\x12\x1c\n" +
 	"\tcreatedAt\x18\n" +
