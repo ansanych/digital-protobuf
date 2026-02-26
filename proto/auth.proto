@@ -6,9 +6,10 @@ package digital;
 option go_package = "./proto";
 
 service AuthService {
+    rpc Health (HealthRequest) returns (HealthReply) {}
     rpc Login (LoginRequest) returns (Tokens) {}
     rpc Refresh (Tokens) returns (Tokens) {}
-    rpc Health (HealthRequest) returns (HealthReply) {}
+    rpc Register (CreateUserRequest) returns (StatusReply) {}
     rpc GetUsers (UsersRequest) returns (Users) {}
     rpc GetUser (StringIDRequest) returns (User) {}
     rpc CreateUser (CreateUserRequest) returns (User) {}
@@ -38,4 +39,5 @@ message Users {
 
 message CreateUserRequest {
     User user = 1;
+    string password = 2;
 }
