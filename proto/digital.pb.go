@@ -322,7 +322,7 @@ func (x *Pagination) GetTotal() uint32 {
 
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Lastname      string                 `protobuf:"bytes,3,opt,name=lastname,proto3" json:"lastname,omitempty"`
 	Login         string                 `protobuf:"bytes,4,opt,name=login,proto3" json:"login,omitempty"`
@@ -367,11 +367,11 @@ func (*User) Descriptor() ([]byte, []int) {
 	return file_digital_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *User) GetId() string {
+func (x *User) GetId() uint64 {
 	if x != nil {
 		return x.Id
 	}
-	return ""
+	return 0
 }
 
 func (x *User) GetName() string {
@@ -464,7 +464,7 @@ const file_digital_proto_rawDesc = "" +
 	"\x05limit\x18\x03 \x01(\rR\x05limit\x12\x14\n" +
 	"\x05total\x18\x04 \x01(\rR\x05total\"\xa0\x02\n" +
 	"\x04User\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
 	"\blastname\x18\x03 \x01(\tR\blastname\x12\x14\n" +
 	"\x05login\x18\x04 \x01(\tR\x05login\x12\x14\n" +

@@ -34,7 +34,7 @@ message Pagination {
 }
 
 message User {
-    string id = 1;
+    uint64 id = 1;
     string name = 2;
     string lastname = 3;
     string login = 4;
