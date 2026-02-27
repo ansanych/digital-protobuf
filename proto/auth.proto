@@ -9,6 +9,7 @@ service AuthService {
     rpc Health (HealthRequest) returns (HealthReply) {}
     rpc Login (LoginRequest) returns (Tokens) {}
     rpc Refresh (Tokens) returns (Tokens) {}
+    rpc ValidateToken(Tokens) returns (User) {}
     rpc Register (CreateUserRequest) returns (StatusReply) {}
     rpc GetUsers (UsersRequest) returns (Users) {}
     rpc GetUser (StringIDRequest) returns (User) {}

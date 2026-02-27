@@ -339,11 +339,12 @@ const file_auth_proto_rawDesc = "" +
 	"\x05login\x18\x03 \x01(\tR\x05login\x12\x14\n" +
 	"\x05email\x18\x04 \x01(\tR\x05email\x12\x14\n" +
 	"\x05phone\x18\x05 \x01(\tR\x05phone\x12\x1a\n" +
-	"\bpassword\x18\x06 \x01(\tR\bpassword2\x91\x04\n" +
+	"\bpassword\x18\x06 \x01(\tR\bpassword2\xc4\x04\n" +
 	"\vAuthService\x128\n" +
 	"\x06Health\x12\x16.digital.HealthRequest\x1a\x14.digital.HealthReply\"\x00\x121\n" +
 	"\x05Login\x12\x15.digital.LoginRequest\x1a\x0f.digital.Tokens\"\x00\x12-\n" +
-	"\aRefresh\x12\x0f.digital.Tokens\x1a\x0f.digital.Tokens\"\x00\x12>\n" +
+	"\aRefresh\x12\x0f.digital.Tokens\x1a\x0f.digital.Tokens\"\x00\x121\n" +
+	"\rValidateToken\x12\x0f.digital.Tokens\x1a\r.digital.User\"\x00\x12>\n" +
 	"\bRegister\x12\x1a.digital.CreateUserRequest\x1a\x14.digital.StatusReply\"\x00\x123\n" +
 	"\bGetUsers\x12\x15.digital.UsersRequest\x1a\x0e.digital.Users\"\x00\x124\n" +
 	"\aGetUser\x12\x18.digital.StringIDRequest\x1a\r.digital.User\"\x00\x129\n" +
@@ -386,23 +387,25 @@ var file_auth_proto_depIdxs = []int32{
 	7,  // 2: digital.AuthService.Health:input_type -> digital.HealthRequest
 	0,  // 3: digital.AuthService.Login:input_type -> digital.LoginRequest
 	1,  // 4: digital.AuthService.Refresh:input_type -> digital.Tokens
-	4,  // 5: digital.AuthService.Register:input_type -> digital.CreateUserRequest
-	2,  // 6: digital.AuthService.GetUsers:input_type -> digital.UsersRequest
-	8,  // 7: digital.AuthService.GetUser:input_type -> digital.StringIDRequest
-	4,  // 8: digital.AuthService.CreateUser:input_type -> digital.CreateUserRequest
-	4,  // 9: digital.AuthService.UpdateUser:input_type -> digital.CreateUserRequest
-	8,  // 10: digital.AuthService.DeleteUser:input_type -> digital.StringIDRequest
-	9,  // 11: digital.AuthService.Health:output_type -> digital.HealthReply
-	1,  // 12: digital.AuthService.Login:output_type -> digital.Tokens
-	1,  // 13: digital.AuthService.Refresh:output_type -> digital.Tokens
-	10, // 14: digital.AuthService.Register:output_type -> digital.StatusReply
-	3,  // 15: digital.AuthService.GetUsers:output_type -> digital.Users
-	5,  // 16: digital.AuthService.GetUser:output_type -> digital.User
-	5,  // 17: digital.AuthService.CreateUser:output_type -> digital.User
-	10, // 18: digital.AuthService.UpdateUser:output_type -> digital.StatusReply
-	10, // 19: digital.AuthService.DeleteUser:output_type -> digital.StatusReply
-	11, // [11:20] is the sub-list for method output_type
-	2,  // [2:11] is the sub-list for method input_type
+	1,  // 5: digital.AuthService.ValidateToken:input_type -> digital.Tokens
+	4,  // 6: digital.AuthService.Register:input_type -> digital.CreateUserRequest
+	2,  // 7: digital.AuthService.GetUsers:input_type -> digital.UsersRequest
+	8,  // 8: digital.AuthService.GetUser:input_type -> digital.StringIDRequest
+	4,  // 9: digital.AuthService.CreateUser:input_type -> digital.CreateUserRequest
+	4,  // 10: digital.AuthService.UpdateUser:input_type -> digital.CreateUserRequest
+	8,  // 11: digital.AuthService.DeleteUser:input_type -> digital.StringIDRequest
+	9,  // 12: digital.AuthService.Health:output_type -> digital.HealthReply
+	1,  // 13: digital.AuthService.Login:output_type -> digital.Tokens
+	1,  // 14: digital.AuthService.Refresh:output_type -> digital.Tokens
+	5,  // 15: digital.AuthService.ValidateToken:output_type -> digital.User
+	10, // 16: digital.AuthService.Register:output_type -> digital.StatusReply
+	3,  // 17: digital.AuthService.GetUsers:output_type -> digital.Users
+	5,  // 18: digital.AuthService.GetUser:output_type -> digital.User
+	5,  // 19: digital.AuthService.CreateUser:output_type -> digital.User
+	10, // 20: digital.AuthService.UpdateUser:output_type -> digital.StatusReply
+	10, // 21: digital.AuthService.DeleteUser:output_type -> digital.StatusReply
+	12, // [12:22] is the sub-list for method output_type
+	2,  // [2:12] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name
 	2,  // [2:2] is the sub-list for extension extendee
 	0,  // [0:2] is the sub-list for field type_name

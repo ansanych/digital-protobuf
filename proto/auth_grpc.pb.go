@@ -19,15 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthService_Health_FullMethodName     = "/digital.AuthService/Health"
-	AuthService_Login_FullMethodName      = "/digital.AuthService/Login"
-	AuthService_Refresh_FullMethodName    = "/digital.AuthService/Refresh"
-	AuthService_Register_FullMethodName   = "/digital.AuthService/Register"
-	AuthService_GetUsers_FullMethodName   = "/digital.AuthService/GetUsers"
-	AuthService_GetUser_FullMethodName    = "/digital.AuthService/GetUser"
-	AuthService_CreateUser_FullMethodName = "/digital.AuthService/CreateUser"
-	AuthService_UpdateUser_FullMethodName = "/digital.AuthService/UpdateUser"
-	AuthService_DeleteUser_FullMethodName = "/digital.AuthService/DeleteUser"
+	AuthService_Health_FullMethodName        = "/digital.AuthService/Health"
+	AuthService_Login_FullMethodName         = "/digital.AuthService/Login"
+	AuthService_Refresh_FullMethodName       = "/digital.AuthService/Refresh"
+	AuthService_ValidateToken_FullMethodName = "/digital.AuthService/ValidateToken"
+	AuthService_Register_FullMethodName      = "/digital.AuthService/Register"
+	AuthService_GetUsers_FullMethodName      = "/digital.AuthService/GetUsers"
+	AuthService_GetUser_FullMethodName       = "/digital.AuthService/GetUser"
+	AuthService_CreateUser_FullMethodName    = "/digital.AuthService/CreateUser"
+	AuthService_UpdateUser_FullMethodName    = "/digital.AuthService/UpdateUser"
+	AuthService_DeleteUser_FullMethodName    = "/digital.AuthService/DeleteUser"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -37,6 +38,7 @@ type AuthServiceClient interface {
 	Health(ctx context.Context, in *HealthRequest, opts ...grpc.CallOption) (*HealthReply, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*Tokens, error)
 	Refresh(ctx context.Context, in *Tokens, opts ...grpc.CallOption) (*Tokens, error)
+	ValidateToken(ctx context.Context, in *Tokens, opts ...grpc.CallOption) (*User, error)
 	Register(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*StatusReply, error)
 	GetUsers(ctx context.Context, in *UsersRequest, opts ...grpc.CallOption) (*Users, error)
 	GetUser(ctx context.Context, in *StringIDRequest, opts ...grpc.CallOption) (*User, error)
@@ -77,6 +79,16 @@ func (c *authServiceClient) Refresh(ctx context.Context, in *Tokens, opts ...grp
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Tokens)
 	err := c.cc.Invoke(ctx, AuthService_Refresh_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) ValidateToken(ctx context.Context, in *Tokens, opts ...grpc.CallOption) (*User, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(User)
+	err := c.cc.Invoke(ctx, AuthService_ValidateToken_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -150,6 +162,7 @@ type AuthServiceServer interface {
 	Health(context.Context, *HealthRequest) (*HealthReply, error)
 	Login(context.Context, *LoginRequest) (*Tokens, error)
 	Refresh(context.Context, *Tokens) (*Tokens, error)
+	ValidateToken(context.Context, *Tokens) (*User, error)
 	Register(context.Context, *CreateUserRequest) (*StatusReply, error)
 	GetUsers(context.Context, *UsersRequest) (*Users, error)
 	GetUser(context.Context, *StringIDRequest) (*User, error)
@@ -174,6 +187,9 @@ func (UnimplementedAuthServiceServer) Login(context.Context, *LoginRequest) (*To
 }
 func (UnimplementedAuthServiceServer) Refresh(context.Context, *Tokens) (*Tokens, error) {
 	return nil, status.Error(codes.Unimplemented, "method Refresh not implemented")
+}
+func (UnimplementedAuthServiceServer) ValidateToken(context.Context, *Tokens) (*User, error) {
+	return nil, status.Error(codes.Unimplemented, "method ValidateToken not implemented")
 }
 func (UnimplementedAuthServiceServer) Register(context.Context, *CreateUserRequest) (*StatusReply, error) {
 	return nil, status.Error(codes.Unimplemented, "method Register not implemented")
@@ -264,6 +280,24 @@ func _AuthService_Refresh_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthServiceServer).Refresh(ctx, req.(*Tokens))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_ValidateToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Tokens)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ValidateToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_ValidateToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ValidateToken(ctx, req.(*Tokens))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -394,6 +428,10 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Refresh",
 			Handler:    _AuthService_Refresh_Handler,
+		},
+		{
+			MethodName: "ValidateToken",
+			Handler:    _AuthService_ValidateToken_Handler,
 		},
 		{
 			MethodName: "Register",
